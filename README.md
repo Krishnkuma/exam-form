@@ -1,61 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+                         ----------------------------------SETUP OF PROJECT------------------------------
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Step 1: Clone the Repository
 
-## About Laravel
+Clone the project from GitHub and navigate into the project folder:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+git clone https://github.com/Krishnkuma/exam-form.git
+cd exam-form
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Step 2: Install Composer Dependencies
 
-## Learning Laravel
+Install all the necessary PHP dependencies using Composer:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+composer install
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Step 3: Configure Environment File
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Laravel uses an .env file to manage environment variables.
+Copy the example environment file to create a new one:
 
-## Laravel Sponsors
+cp .env.example .env
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+Then, open the .env file and update your database and app configurations:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
 
-## Contributing
+Step 4: Generate Application Key
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Generate a unique application key for your Laravel app:
 
-## Code of Conduct
+php artisan key:generate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+Step 5: Run Database Migrations
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+To create the required database tables, run the Laravel migrations:
 
-## License
+php artisan migrate
+php artisan db:seed
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+Step 6: Create Storage Link
+
+php artisan storage:link
+
+Step 7: Start the Development Server
+
+php artisan serve
+
+
+Once the server starts, open your browser and go to:
+
+http://127.0.0.1:8000
+
+
+
+
+
+
+                    ----------------------------PROJECT DOCUMENTATION------------------------
+
+
+1. Run the Project
+
+Start the Laravel development server using the following command:
+
+php artisan serve
+
+
+The application will run at:
+
+http://127.0.0.1:8000
+
+
+
+User Roles
+1. Admin
+
+The admin account cannot be created manually through registration.
+
+The default admin credentials are added via database seeding.
+
+Run the following command to create the default admin user:
+
+php artisan db:seed
+
+Admin Login Credentials
+
+Email: dcs@gmail.com
+
+Password: dcs@gmail.com
+
+Admin Features
+
+View all registered students.
+
+View individual student forms and payment receipts.
+
+Check payment details including Payment ID.
+
+2. Student
+
+Students can create a new account using the registration form.
+
+During registration, students must enter:
+
+Name
+
+Email
+
+Password (minimum 6 characters, maximum 16 characters)
+
+Student Features
+
+Login by selecting the Student role.
+
+Access the Student Dashboard after successful login.
+
+Fill out the form and proceed to pay the fee of ₹500 using the Razorpay payment gateway.
+
+After successful payment, the student can view and download the fee receipt.
+
+Payment Gateway
+
+Integrated Gateway: Razorpay
+
+Fee Amount: ₹500
+
+After a successful transaction, payment details and receipts are stored and accessible to both student and admin.
